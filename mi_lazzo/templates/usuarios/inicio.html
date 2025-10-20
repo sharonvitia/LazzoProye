@@ -1,0 +1,40 @@
+{% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card">
+    <div class="logo-container">
+        <!-- Si tienes un logo, descomenta esta línea y coloca tu logo en static/img/ -->
+        <!-- <img src="{% static 'img/logo.png' %}" alt="Lazzo Logo" class="logo"> -->
+        <h1 class="app-title">LAZZO</h1>
+        <p style="color: #666; margin-top: 10px;">Conectando emprendedores con consumidores</p>
+    </div>
+
+    <div style="text-align: center; margin: 30px 0;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 15px;">¡Bienvenido!</h2>
+        <p style="color: #666; margin-bottom: 30px;">Elige cómo deseas continuar</p>
+    </div>
+
+    <a href="{% url 'login' %}" class="btn btn-primary">
+        Iniciar Sesión
+    </a>
+
+    <a href="{% url 'seleccion_tipo' %}" class="btn btn-secondary">
+        Registrarse
+    </a>
+
+    <div class="divider">
+        <span>o</span>
+    </div>
+
+    <a href="{% url 'invitado' %}" class="btn btn-outline">
+        Continuar como invitado
+    </a>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <p style="font-size: 0.9rem; color: #666;">
+            ¿Primera vez aquí? <a href="{% url 'seleccion_tipo' %}" style="color: #4CAF50; text-decoration: none;">Crea tu cuenta</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

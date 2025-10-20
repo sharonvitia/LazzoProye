@@ -1,0 +1,104 @@
+{% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card">
+    <div class="logo-container">
+        <h1 class="app-title" style="color: #4CAF50;">LAZZO</h1>
+        <p style="color: #666; margin-top: 10px;">Registro de Consumidor</p>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 25px;">
+        <div style="font-size: 3rem; margin-bottom: 10px;">🛍️</div>
+        <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Crea tu cuenta de Consumidor</h2>
+        <p style="color: #666; font-size: 0.9rem;">Descubre productos únicos</p>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+        <div class="errorlist">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="{{ form.nombre_completo.id_for_label }}">{{ form.nombre_completo.label }}</label>
+            {{ form.nombre_completo }}
+            {% if form.nombre_completo.errors %}
+                <ul class="errorlist">
+                    {% for error in form.nombre_completo.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <ul class="errorlist">
+                    {% for error in form.email.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <ul class="errorlist">
+                    {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if form.username.help_text %}
+                <span class="helptext">{{ form.username.help_text }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <ul class="errorlist">
+                    {% for error in form.password1.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if form.password1.help_text %}
+                <span class="helptext">{{ form.password1.help_text }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+                <ul class="errorlist">
+                    {% for error in form.password2.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Crear Cuenta de Consumidor
+        </button>
+    </form>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <p style="font-size: 0.9rem; color: #666;">
+            ¿Ya tienes cuenta? <a href="{% url 'login' %}" style="color: #4CAF50; text-decoration: none;">Inicia sesión</a>
+        </p>
+        <a href="{% url 'seleccion_tipo' %}" class="link-secondary" style="display: inline-block; margin-top: 10px;">← Elegir otro tipo de cuenta</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'usuarios/base.html' %}
+
+{% block title %}Home - Lazzo{% endblock %}
+
+{% block content %}
+<h2>Bienvenido a Lazzo</h2>
+<p>Conecta emprendedores con consumidores en una plataforma innovadora.</p>
+{% if user.tipo_usuario == 'emprendedor' %}
+    <h3>Opciones para Emprendedores</h3>
+    <ul>
+        <li><a href="{% url 'publicar_producto' %}">Publicar Producto</a></li>
+        <li><a href="{% url 'mis_productos' %}">Mis Productos</a></li>
+    </ul>
+{% elif user.tipo_usuario == 'consumidor' %}
+    <h3>Opciones para Consumidores</h3>
+    <ul>
+        <li><a href="{% url 'ver_productos' %}">Ver Productos</a></li>
+        <li><a href="{% url 'carrito' %}">Mi Carrito</a></li>
+    </ul>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card card-wide">
+    <div class="logo-container">
+        <h1 class="app-title">LAZZO</h1>
+        <p style="color: #666; margin-top: 10px;">Selecciona tu tipo de cuenta</p>
+    </div>
+
+    <h2 style="font-size: 1.5rem; margin-bottom: 30px;">¿Cómo quieres usar Lazzo?</h2>
+
+    <div class="selection-grid">
+        <!-- Tarjeta de Consumidor -->
+        <div class="selection-card" onclick="window.location.href='{% url 'registro_consumidor' %}'">
+            <div class="selection-card-icon">🛍️</div>
+            <h3>Soy Consumidor</h3>
+            <p>Quiero explorar y comprar productos de emprendedores locales</p>
+            <div style="margin-top: 20px;">
+                <a href="{% url 'registro_consumidor' %}" class="btn btn-primary" style="width: auto; padding: 10px 20px;">
+                    Continuar
+                </a>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Emprendedor -->
+        <div class="selection-card emprendedor" onclick="window.location.href='{% url 'registro_emprendedor' %}'">
+            <div class="selection-card-icon">💼</div>
+            <h3>Soy Emprendedor</h3>
+            <p>Quiero vender mis productos y hacer crecer mi negocio</p>
+            <div style="margin-top: 20px;">
+                <a href="{% url 'registro_emprendedor' %}" class="btn btn-secondary" style="width: auto; padding: 10px 20px;">
+                    Continuar
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{% url 'inicio' %}" class="link-secondary">← Volver al inicio</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .selection-card {
+        cursor: pointer;
+    }
+    .selection-card:hover .selection-card-icon {
+        transform: scale(1.2);
+        transition: transform 0.3s ease;
+    }
+</style>
+{% endblock %}
